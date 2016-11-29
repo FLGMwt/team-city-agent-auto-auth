@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teamcity-plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:schemas-jetbrains-com:teamcity-plugin-v1-xml">
+  <info>
+    <name>AgentAutoAuthorize</name>
+    <display-name>Agent Auto Authorize</display-name>
+    <version>@version@</version>
+    <description>
+      If an agent has the "auto_authorize" parameter set to true, they will be automatically authorized when they are registered and unauthorized when unregistered
+    </description>
+
+    <vendor>
+      <name>Ryan Stelly</name>
+      <url>https://github.com/flgmwt</url>
+    </vendor>
+  </info>
+</teamcity-plugin>
