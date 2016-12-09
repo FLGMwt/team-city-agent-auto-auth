@@ -5,6 +5,8 @@ For organizations that heavily automate their build agent infrastructure, the ma
 
 "Agent Auto Authorize" listens for agent registrations and automatically authorizes them if they have the `auto_authorize` agent property. Additionally, if they become unregistered for any reason, they will also be unauthorized.
 
+NOTE: Because this plugin circumvents the manual agent authorization step which is guarded by TeamCity authentication, only use this if your TeamCity server is inaccessible to the public Internet. 
+
 # Installation
 
 1. Upload `AutoAuthorize.zip` to your TeamCity plugin directory. (If you're doing this through the UI, you can find it at https://your-teamcity/admin/admin.html?item=plugins)
