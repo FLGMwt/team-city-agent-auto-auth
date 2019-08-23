@@ -4,7 +4,7 @@
   <info>
     <name>AgentAutoManage</name>
     <display-name>Agent Auto Manage</display-name>
-    <version>SNAPSHOT-201908222328</version>
+    <version>SNAPSHOT-201908222346</version>
     <description>
       If an agent has the "autoAuthorize" or "autoManage" parameter set to true, they will be automatically authorized when they are registered and unauthorized/removed when unregistered.
     </description>
