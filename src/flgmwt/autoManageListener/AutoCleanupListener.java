@@ -16,21 +16,22 @@
 
 package flgmwt.autoManageListener;
 
-import java.util.*;
-
 import jetbrains.buildServer.serverSide.BuildServerAdapter;
 import jetbrains.buildServer.serverSide.SBuildAgent;
+import jetbrains.buildServer.serverSide.BuildAgentManager;
 import jetbrains.buildServer.serverSide.SBuildServer;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 
 /**
  * Authorizes agents as soon as they're registered
  */
-public class AutoAuthorizeListener extends BuildServerAdapter {
+public class AutoCleanupListener extends BuildServerAdapter {
   private final SBuildServer myBuildServer;
 
-  public AutoAuthorizeListener(SBuildServer sBuildServer) {
+  public AutoCleanupListener(SBuildServer sBuildServer) {
     myBuildServer = sBuildServer;
   }
 
@@ -39,20 +40,11 @@ public class AutoAuthorizeListener extends BuildServerAdapter {
   }
 
   @Override
-  public void agentRegistered(@NotNull SBuildAgent sBuildAgent, long l) {
-    Map<String,String> parameters = sBuildAgent.getAvailableParameters();
-    if ((parameters.containsKey("autoAuthorize") && parameters.get("autoAuthorize").equals("true")) ||
-        (parameters.containsKey("autoManage") && parameters.get("autoManage").equals("true"))) {
-      sBuildAgent.setAuthorized(true, null, "ASG agent registered");
-    }
-  }
-
-  @Override
   public void agentUnregistered(@NotNull SBuildAgent sBuildAgent) {
     Map<String,String> parameters = sBuildAgent.getAvailableParameters();
-    if ((parameters.containsKey("autoAuthorize") && parameters.get("autoAuthorize").equals("true")) ||
-        (parameters.containsKey("autoManage") && parameters.get("autoManage").equals("true"))) {
-      sBuildAgent.setAuthorized(false, null, "ASG agent unregistered");
+    if (parameters.containsKey("autoManage") && parameters.get("autoManage").equals("true")) {
+      BuildAgentManager bam = this.myBuildServer.getBuildAgentManager();
+      bam.removeAgent(sBuildAgent, null);
     }
   }
 }
