@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TeamCityAutoAuthorizePlugin" default="dist">
+<project name="TeamCityAutoManagePlugin" default="dist">
 
   <property file="build.properties"/>
-  <property name="plugin.name" value="AutoAuthorize"/>
+  <property name="plugin.name" value="AutoManage"/>
   <property name="javac2.home" value="${basedir}/lib-compile"/>
 
   <import file="teamcity-common.xml"/>
-  <import file="teamcitysampleplugin.xml"/>
+  <import file="teamcityautomanageplugin.xml"/>
 
   <target name="package" depends="define.version">
     <package.teamcity.plugin name="${plugin.name}" server.output="${server.output.dir}"

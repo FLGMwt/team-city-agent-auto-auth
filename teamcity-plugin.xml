@@ -2,11 +2,11 @@
 <teamcity-plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:noNamespaceSchemaLocation="urn:schemas-jetbrains-com:teamcity-plugin-v1-xml">
   <info>
-    <name>AgentAutoAuthorize</name>
-    <display-name>Agent Auto Authorize</display-name>
+    <name>AgentAutoManage</name>
+    <display-name>Agent Auto Manage</display-name>
     <version>@version@</version>
     <description>
-      If an agent has the "auto_authorize" parameter set to true, they will be automatically authorized when they are registered and unauthorized when unregistered
+      If an agent has the "autoAuthorize" or "autoManage" parameter set to true, they will be automatically authorized when they are registered and unauthorized/removed when unregistered.
     </description>
 
     <vendor>
