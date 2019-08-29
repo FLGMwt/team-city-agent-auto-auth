@@ -42,7 +42,7 @@ public class AutoCleanupListener extends BuildServerAdapter {
   @Override
   public void agentUnregistered(@NotNull SBuildAgent sBuildAgent) {
     Map<String,String> parameters = sBuildAgent.getAvailableParameters();
-    if (parameters.containsKey("autoManage") && parameters.get("autoManage").equals("true")) {
+    if (parameters.containsKey("autoManage") && parameters.get("autoManage").equals("true") && !sBuildAgent.isUpgrading()) {
       BuildAgentManager bam = this.myBuildServer.getBuildAgentManager();
       bam.removeAgent(sBuildAgent, null);
     }
